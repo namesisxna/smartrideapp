@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Smart Ride</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="menu_settings">Settings</string>
+
+
+
+    <string name="action_next">NEXT</string>
+    <string name="action_reset">RESET</string>
+    <string name="dummy_button"></string>
+    <string name="dummy_content"></string>
+
+</resources>

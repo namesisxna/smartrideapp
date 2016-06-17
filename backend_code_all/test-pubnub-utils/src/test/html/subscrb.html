@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<style> 
+.rcorners1 {
+    border-radius: 25px;
+    background: skyblue;
+    padding: 20px; 
+    width: 500px;
+    height: 150px;    
+}
+
+.rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+
+.rcorners3 {
+    border-radius: 25px;
+    background: url(paper.gif);
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+</style>
+
+<script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+
+
+<body>
+<script type="text/javascript">
+
+    var PUBNUB_demo = PUBNUB.init({
+        publish_key: 'pub-c-d1fd173b-9659-49bb-bd2a-932dbb59b4ed',
+        subscribe_key: 'sub-c-98efdd80-aa19-11e5-bb8b-02ee2ddab7fe'
+    });
+
+ 	// Subscribe to the demo_tutorial channel
+    PUBNUB_demo.subscribe({
+        channel: 'cell-1234-ch_resp',
+        message: function(m){
+        	console.log(m);
+        	var ms = JSON.stringify(m);
+        	last = document.getElementById("dv1").innerHTML;
+        	document.getElementById("dv1").innerHTML=last+"<br>"+m;
+        }
+    }); 	
+</script>
+
+Received Messages<br>
+	<div id="dv1" name="dvnm1" class="rcorners1"></div>
+</body>
+</html>

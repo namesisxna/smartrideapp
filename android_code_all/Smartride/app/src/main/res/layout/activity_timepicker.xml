@@ -1,0 +1,39 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/timepickerlayout"
+    android:gravity="center">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        />
+        
+        <Button
+        android:id="@+id/getTime"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="SELECT TIME"
+        android:gravity="center_horizontal"
+        />
+    <Button
+        android:id="@+id/getRoutes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="GetRoutes"
+        android:gravity="center_horizontal"
+        />
+
+
+</LinearLayout>
+</RelativeLayout>

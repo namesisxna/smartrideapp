@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<style> 
+
+.rcorners1 {
+    border-radius: 25px;
+    background: #e0e0eb;
+    padding: 20px; 
+    width: 500px;
+    height: 150px;    
+}
+.rcorners2 {
+    border-radius: 25px;
+   # border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 510px;
+    height: 150px;    
+}
+
+</style>
+
+<script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
+<script type="text/javascript">
+	function doPublish() {
+		msg = document.getElementById("txa1").value;
+		val=document.getElementById("div1").innerHTML;
+		document.getElementById("div1").innerHTML=val+"<br>Sougata: "+ msg;
+		//Publish
+	    PUBNUB_demo.publish({
+	        channel: 'cell-1234-ch',
+	        message: msg
+	    });
+		document.getElementById("txa1").value="";
+	}
+	
+	function clearMsg() {
+		document.getElementById("div1").innerHTML="";
+	}
+</script>
+</head>
+
+
+<body>
+<script type="text/javascript">
+    var PUBNUB_demo = PUBNUB.init({
+        publish_key: 'pub-c-d1fd173b-9659-49bb-bd2a-932dbb59b4ed',
+        subscribe_key: 'sub-c-98efdd80-aa19-11e5-bb8b-02ee2ddab7fe'
+    });    
+</script>
+
+<div class="rcorners2">
+<div id="div1" class="rcorners1"></div>
+<div align="right">
+<a href="javascript:clearMsg()" align="right">clear</a></div></div>
+<br><br>
+Write Message<br>
+<textarea rows="5" cols="80" id="txa1">{"uuid":"112233", "mydata":"dat 111"}</textarea><br>
+<input type="button" value="Submit" onclick="doPublish()">
+
+</body>
+</html>
