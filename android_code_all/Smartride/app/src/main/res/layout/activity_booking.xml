@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bookingLayout"
+
+    tools:context=".BookingActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/tentativeBooking_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textColor="#80000000"/>
+
+        <Button
+            android:id="@+id/confirmedBooking_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textColor="#80000000"/>
+        <TextView
+            android:id="@+id/showcostView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:layout_marginTop="25dp" />
+        <TextView
+            android:id="@+id/showcostView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="Arial"/>
+        <TextView
+            android:id="@+id/showcostView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-black-small-caps"
+            android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/showcostView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/showcostView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

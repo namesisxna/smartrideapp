@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/confirmQrCodeLayout"
+
+    tools:context=".ConfirmedQrCodeActivity">
+
+    
+
+    <ImageView
+        android:id="@+id/confirmQrImgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+    <Button
+        android:id="@+id/confirmedQr_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TRACK ROUTE"
+        android:layout_below="@+id/confirmQrImgView"
+        android:textStyle="bold"
+        android:textColor="#80000000"/>
+
+
+
+
+</RelativeLayout>

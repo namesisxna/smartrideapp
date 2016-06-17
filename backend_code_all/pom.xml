@@ -1,0 +1,27 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.cts.gto.techngage.smartride.backend</groupId>
+	<artifactId>smartride-backend-parent</artifactId>
+	<version>1.0</version>
+	
+	<packaging>pom</packaging>
+  <name>Smart Ride - Backend Parent</name>
+  <modules>
+  	<module>smartride-dataobj</module>
+  	<module>db-connection-utils</module>
+	
+	<module>pubnub-utils</module>
+	<module>smartride-dao</module>
+	<module>smartride-backend-manager</module>
+	<module>smartride-backend-adapter</module>	
+	
+	<module>smartride-main</module>	
+	
+	
+  </modules>	
+	
+</project>

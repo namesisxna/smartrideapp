@@ -1,0 +1,100 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.cts.gto.techngage.smartride.backend</groupId>
+	<artifactId>smartride-main</artifactId>
+	<version>1.0</version>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.cts.gto.techngage.smartride.backend</groupId>
+			<artifactId>smartride-dataobj</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.cts.gto.techngage.smartride.backend</groupId>
+			<artifactId>smartride-backend-adapter</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+
+	</dependencies>
+	
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<artifactSet>
+
+								<includes>
+									<!-- <include>com.transcelerate.sip.consumer:*</include> <include>com.transcelerate.sip:data-types</include> 
+										<include>com.transcelerate.sip:exception-types</include> <include>com.transcelerate.sip.services:*-intf</include> 
+										<include>com.transcelerate.sip.services:*-consumer</include> <include>com.transcelerate.sip.services.lms:*-intf</include> 
+										<include>com.transcelerate.sip.services.lms:*-consumer</include> <include>com.transcelerate.sip.services.lms:*-client</include> -->
+								</includes>
+
+							</artifactSet>
+
+							<filters>
+								
+								<!-- <filter> <artifact>com.transcelerate.sip.services.lms:*-intf</artifact> 
+									<excludes> <exclude>META-INF/schema-bindings/**</exclude> <exclude>META-INF/maven/**</exclude> 
+									<exclude>META-INF/soa/**/*.wsdl</exclude> <exclude>META-INF/soa/**/*.xsd</exclude> 
+									</excludes> </filter> <filter> <artifact>com.transcelerate.sip.services:*-consumer</artifact> 
+									<excludes> <exclude>META-INF/schema-bindings/**</exclude> <exclude>META-INF/maven/**</exclude> 
+									</excludes> </filter> <filter> <artifact>com.transcelerate.sip.services.lms:*-client</artifact> 
+									<excludes> <exclude>META-INF/schema-bindings/**</exclude> <exclude>META-INF/maven/**</exclude> 
+									<exclude>META-INF/soa/**</exclude> <exclude>schema-bindings/**</exclude> 
+									<exclude>wsdl/**</exclude> </excludes> </filter> -->
+							</filters>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>truezip-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<id>remove-a-file-in-sub-archive</id>
+						<goals>
+							<goal>remove</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<fileset>
+								<directory>target/smartride-main-1.0.jar/META-INF</directory>
+								<includes>
+									<include>BCKEY.*</include>
+								</includes>
+							</fileset>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+	
+	
+</project>

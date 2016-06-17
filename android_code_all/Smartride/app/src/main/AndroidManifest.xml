@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cts.gto.techngage.smartride.android">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <activity
+            android:name=".FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegistrationSmartphoneActivity"
+            android:label="Register"
+            android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="Select Route" android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TimepickerActivity"
+            android:label="Select pickup time" android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DatepickerActivity"
+            android:label="Select pickup date" android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TableActivity"
+            android:label="Route status" android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BookingActivity"
+            android:label="Booking" android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".QrCodeActivity"
+            android:label="QrCode" android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ConfirmedQrCodeActivity"
+            android:label="ConfirmedQR" android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ExistingBookingActivity"
+            android:label="Generate QR For Exiting Booking " android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ExistingBookingTableActivity"
+            android:label="Generate QR For Exiting Booking " android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ExistingQrCodeActivity"
+            android:label="Generated QR " android:background="#465371" android:textColor="#ffffffff" android:gravity="center">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+
+
+    </application>
+
+</manifest>

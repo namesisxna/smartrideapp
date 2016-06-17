@@ -1,0 +1,511 @@
+--------------------------------------------------------
+--  File created - Friday-June-17-2016   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table BOOKING
+--------------------------------------------------------
+
+  CREATE TABLE "BOOKING" 
+   (	"BOOKING_ID" NUMBER, 
+	"BOOKING_NUM" VARCHAR2(20 BYTE), 
+	"PSNGR_ID" NUMBER, 
+	"ROUTE_ID" NUMBER, 
+	"BOOKING_TYPE" CHAR(1 BYTE) DEFAULT 'T', 
+	"ONBOARD_STOP" NUMBER, 
+	"OFFBOARD_STOP" NUMBER, 
+	"PICKUP_DT_TM" DATE, 
+	"FARE_BLOCKED" NUMBER(4,0), 
+	"FARE_CHARGED" NUMBER(4,0), 
+	"FARE_REFUND" NUMBER(4,0), 
+	"BOOKING_STATUS" CHAR(1 BYTE), 
+	"DEVICE_ID" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table PASSENGER_PHONE
+--------------------------------------------------------
+
+  CREATE TABLE "PASSENGER_PHONE" 
+   (	"DEVICE_ID" NUMBER, 
+	"PSNGR_ID" NUMBER, 
+	"DEVICE_CHANNEL" VARCHAR2(20 BYTE), 
+	"DEVICE_UUID" VARCHAR2(70 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table PASSENGER_PROFILE
+--------------------------------------------------------
+
+  CREATE TABLE "PASSENGER_PROFILE" 
+   (	"PSNGR_ID" NUMBER, 
+	"PSNGR_GMAIL" VARCHAR2(25 BYTE), 
+	"FNAME" VARCHAR2(25 BYTE), 
+	"LNAME" VARCHAR2(25 BYTE), 
+	"EMAIL" VARCHAR2(25 BYTE), 
+	"MOBILE_NO" VARCHAR2(25 BYTE), 
+	"WALLET_AMOUNT" NUMBER
+   );
+--------------------------------------------------------
+--  DDL for Table ROUTE_SCH
+--------------------------------------------------------
+
+  CREATE TABLE "ROUTE_SCH" 
+   (	"ROUTE_ID" NUMBER, 
+	"ROUTE_NM" VARCHAR2(25 BYTE), 
+	"START_STOP" NUMBER, 
+	"END_STOP" NUMBER, 
+	"DEPRT_TM" NUMBER, 
+	"ESTM_ARV_TM" NUMBER, 
+	"IS_RETURN" CHAR(1 BYTE) DEFAULT 'N', 
+	"INTER_STOP_COUNT" NUMBER(*,0) DEFAULT 0
+   );
+--------------------------------------------------------
+--  DDL for Table ROUTE_STOP_MAP
+--------------------------------------------------------
+
+  CREATE TABLE "ROUTE_STOP_MAP" 
+   (	"MAP_ID" NUMBER, 
+	"ROUTE_ID" NUMBER, 
+	"STOP_ID" NUMBER, 
+	"ESTM_ARV_TM" NUMBER, 
+	"NEXT_STOP_DIST" NUMBER(4,0), 
+	"FARE_NEXT_STOP" NUMBER(10,0), 
+	"STOP_SEQ_NO" NUMBER(*,0) DEFAULT 0
+   );
+--------------------------------------------------------
+--  DDL for Table SMART_STOP
+--------------------------------------------------------
+
+  CREATE TABLE "SMART_STOP" 
+   (	"STOP_ID" NUMBER, 
+	"STOP_NM" VARCHAR2(25 BYTE), 
+	"STOP_LAT" VARCHAR2(10 BYTE), 
+	"STOP_LONG" VARCHAR2(10 BYTE)
+   );
+
+--------------------------------------------------------
+--  DDL for Table TRIP_EXEC
+--------------------------------------------------------
+
+  CREATE TABLE "TRIP_EXEC" 
+   (	"TRIP_ID" NUMBER, 
+	"ROUTE_ID" NUMBER, 
+	"VEHICLE_ID" NUMBER, 
+	"TRIP_DATE" DATE, 
+	"NEXT_STOP" NUMBER, 
+	"TRIP_STATUS" CHAR(1 BYTE)
+   );
+--------------------------------------------------------
+--  DDL for Table TRIP_SCHEDULE
+--------------------------------------------------------
+
+  CREATE TABLE "TRIP_SCHEDULE" 
+   (	"TRIP_SCH_ID" NUMBER, 
+	"ROUTE_ID" NUMBER, 
+	"TRIP_DATE" DATE, 
+	"VEHICLE_ID" NUMBER, 
+	"START_TM_HR" NUMBER, 
+	"END_TM_HR" NUMBER
+   );
+ 
+
+   COMMENT ON COLUMN "TRIP_SCHEDULE"."START_TM_HR" IS 'Trip start time in hour';
+ 
+   COMMENT ON COLUMN "TRIP_SCHEDULE"."END_TM_HR" IS 'Trip end time in hour';
+--------------------------------------------------------
+--  DDL for Table VEHICLE_DTL
+--------------------------------------------------------
+
+  CREATE TABLE "VEHICLE_DTL" 
+   (	"VEHICLE_ID" NUMBER, 
+	"REG_NUM" VARCHAR2(15 BYTE), 
+	"VEHICLE_NAME" VARCHAR2(20 BYTE), 
+	"SEAT_COUNT" NUMBER(2,0), 
+	"COST_PER_KM" NUMBER(4,0)
+   );
+REM INSERTING into BOOKING
+SET DEFINE OFF;
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (13,'3',97,54,'C',78,79,to_date('18-MAY-16','DD-MON-RR'),null,null,null,null,null);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (14,'4',96,54,'C',79,78,to_date('16-MAY-16','DD-MON-RR'),null,null,null,null,null);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (15,'5',95,51,'T',80,77,to_date('19-MAY-16','DD-MON-RR'),null,null,null,null,null);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (154,'BOOK_154',null,4,'T',2,1,to_date('16-JUN-16','DD-MON-RR'),null,null,null,'A',4);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (16,'6',96,51,'C',76,81,to_date('17-MAY-16','DD-MON-RR'),null,null,null,null,null);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (121,'BOOK_121',null,4,'T',2,1,to_date('27-MAY-16','DD-MON-RR'),null,null,null,'A',2);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (136,'BOOK_136',null,4,'C',2,1,to_date('14-JUN-16','DD-MON-RR'),null,null,null,'A',3);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (150,'BOOK_150',null,4,'C',2,1,to_date('15-JUN-16','DD-MON-RR'),null,null,null,'A',4);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (177,'BOOK_177',null,4,'T',2,1,to_date('17-JUN-16','DD-MON-RR'),null,null,null,'A',2);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (178,'BOOK_178',null,4,'T',2,1,to_date('18-JUN-16','DD-MON-RR'),null,null,null,'A',2);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (140,'BOOK_140',null,5,'T',2,1,to_date('13-JUN-16','DD-MON-RR'),null,null,null,'A',2);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (152,'BOOK_152',null,5,'T',2,1,to_date('16-JUN-16','DD-MON-RR'),null,null,null,'A',5);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (179,'BOOK_179',null,4,'T',2,1,to_date('18-JUN-16','DD-MON-RR'),null,null,null,'A',2);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (180,'BOOK_180',null,5,'T',2,1,to_date('19-JUN-16','DD-MON-RR'),null,null,null,'A',2);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (138,'BOOK_138',null,5,'C',2,1,to_date('14-JUN-16','DD-MON-RR'),null,null,null,'A',4);
+Insert into BOOKING (BOOKING_ID,BOOKING_NUM,PSNGR_ID,ROUTE_ID,BOOKING_TYPE,ONBOARD_STOP,OFFBOARD_STOP,PICKUP_DT_TM,FARE_BLOCKED,FARE_CHARGED,FARE_REFUND,BOOKING_STATUS,DEVICE_ID) values (143,'BOOK_143',null,5,'T',2,1,to_date('15-JUN-16','DD-MON-RR'),null,null,null,'A',2);
+REM INSERTING into PASSENGER_PHONE
+SET DEFINE OFF;
+Insert into PASSENGER_PHONE (DEVICE_ID,PSNGR_ID,DEVICE_CHANNEL,DEVICE_UUID) values (4,null,'ph-ch_4','356554065149227');
+Insert into PASSENGER_PHONE (DEVICE_ID,PSNGR_ID,DEVICE_CHANNEL,DEVICE_UUID) values (1,null,'ph-ch_1','359708051842479');
+Insert into PASSENGER_PHONE (DEVICE_ID,PSNGR_ID,DEVICE_CHANNEL,DEVICE_UUID) values (2,null,'ph-ch_2','355702062443546');
+Insert into PASSENGER_PHONE (DEVICE_ID,PSNGR_ID,DEVICE_CHANNEL,DEVICE_UUID) values (3,null,'ph-ch_3','355463060320356');
+Insert into PASSENGER_PHONE (DEVICE_ID,PSNGR_ID,DEVICE_CHANNEL,DEVICE_UUID) values (5,null,'ph-ch_5','356554065291441');
+REM INSERTING into PASSENGER_PROFILE
+SET DEFINE OFF;
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (99,'sougataGmail',null,null,null,null,null);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (98,'sumitGmail',null,null,null,null,null);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (97,'souvikGmail',null,null,null,null,null);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (96,'subrataGmail',null,null,null,null,null);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (95,'dipanjanGmail',null,null,null,null,null);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (103,'souvik02Gmail','souvik01','sasmal','souvik01@gmail.com','9876543212',600);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (100,'sumit01Gmail','sumit01','datta','sumit01@gmail.com','9876543212',500);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (101,'subrata01Gmail','subrata01','saha','subrata01@gmail.com','9876543219',550);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (102,'souvik01Gmail','souvik01','sasmal','souvik01@gmail.com','9876543212',600);
+Insert into PASSENGER_PROFILE (PSNGR_ID,PSNGR_GMAIL,FNAME,LNAME,EMAIL,MOBILE_NO,WALLET_AMOUNT) values (104,'subrata02Gmail','subrata2','saha','subrata01@gmail.com',null,600);
+REM INSERTING into ROUTE_SCH
+SET DEFINE OFF;
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (51,'hwh_jadavpur',76,81,6.05,7.05,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (52,'hwh_slt',76,80,6.5,7.9,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (53,'hwh_nwt',76,79,8.9,9.8,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (54,'sed_tol',77,76,7.8,8.7,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (55,'kol_nwt',78,79,9,10.9,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (1,'SaltLake_jadavpur',2,1,10.5,11,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (2,'SaltLake_jadavpur',2,1,11,12.1,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (3,'SaltLake_jadavpur',2,1,9.8,10.7,'N',0);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (4,'Garia Station To New Town',6,8,9,10.7,'N',6);
+Insert into ROUTE_SCH (ROUTE_ID,ROUTE_NM,START_STOP,END_STOP,DEPRT_TM,ESTM_ARV_TM,IS_RETURN,INTER_STOP_COUNT) values (5,'Patuli To Technopolis',2,4,9.5,10.7,'N',0);
+REM INSERTING into ROUTE_STOP_MAP
+SET DEFINE OFF;
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (1,51,76,6.05,2,10,0);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (5,4,3,10.35,3,10,5);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (2,4,2,5.98,3,10,1);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (3,4,10,9.75,3,10,2);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (4,4,1,10.3,3,10,4);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (6,4,4,10.45,3,10,6);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (7,4,11,10,3,10,3);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (8,5,10,9.8,3,10,1);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (9,5,11,10,3,10,2);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (10,5,1,10.25,3,10,3);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (11,5,3,10.3,3,10,4);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (12,5,4,10.5,3,10,5);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (13,5,2,5.98,3,10,0);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (14,4,6,9,3,10,0);
+Insert into ROUTE_STOP_MAP (MAP_ID,ROUTE_ID,STOP_ID,ESTM_ARV_TM,NEXT_STOP_DIST,FARE_NEXT_STOP,STOP_SEQ_NO) values (15,4,8,10.5,3,10,7);
+REM INSERTING into SMART_STOP
+SET DEFINE OFF;
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (76,'hwh','q1','w1');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (77,'esp','q2','w2');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (78,'haz','q3','w3');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (79,'kal','q4','w4');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (80,'tol','q5','w5');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (81,'JADAVPUR8B','q6','w6');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (1,'SALT-SDF','22','88');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (2,'PATULI','21','85');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (10,'RUBY','22','86');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (11,'SCIENCE CITY','22','87');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (3,'COLLGMORE','21','85');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (4,'TECHNOPOLIS','21.4','85.2');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (5,'JADAVPUR-PS','20','86');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (7,'GARIA-BS','20.2','86.5');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (6,'GARIA-STN','20.5','87');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (8,'NEWTOWN','20.5','87');
+Insert into SMART_STOP (STOP_ID,STOP_NM,STOP_LAT,STOP_LONG) values (9,'UNITECH','22','86');
+REM INSERTING into TRIP_EXEC
+SET DEFINE OFF;
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (1,51,1,to_date('17-MAY-16','DD-MON-RR'),76,'S');
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (3,52,1,to_date('17-MAY-16','DD-MON-RR'),77,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (5,52,1,to_date('17-MAY-16','DD-MON-RR'),77,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (7,52,1,to_date('17-MAY-16','DD-MON-RR'),77,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (2,52,1,to_date('17-MAY-16','DD-MON-RR'),77,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (10,54,1,to_date('19-MAY-16','DD-MON-RR'),78,'s');
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (4,52,1,to_date('17-MAY-16','DD-MON-RR'),77,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (6,52,1,to_date('17-MAY-16','DD-MON-RR'),77,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (8,54,1,to_date('19-MAY-16','DD-MON-RR'),78,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (9,54,1,to_date('19-MAY-16','DD-MON-RR'),78,null);
+Insert into TRIP_EXEC (TRIP_ID,ROUTE_ID,VEHICLE_ID,TRIP_DATE,NEXT_STOP,TRIP_STATUS) values (11,54,1,to_date('19-MAY-16','DD-MON-RR'),78,'A');
+REM INSERTING into TRIP_SCHEDULE
+SET DEFINE OFF;
+Insert into TRIP_SCHEDULE (TRIP_SCH_ID,ROUTE_ID,TRIP_DATE,VEHICLE_ID,START_TM_HR,END_TM_HR) values (1,4,to_date('27-MAY-16','DD-MON-RR'),8,9,10.7);
+REM INSERTING into VEHICLE_DTL
+SET DEFINE OFF;
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (1,'WB01E2345','Bus',30,50);
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (2,'WB01C9876','Maruti OMNI',2,10);
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (3,'WB12A2345','Tata Indica',4,15);
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (4,'WB07R3452','Sumo Gold',8,20);
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (5,'WB04T2399','Force F1',12,22);
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (6,'WB01E2346','Bus 2',20,45);
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (7,'WB01E5346','Bus 3',20,45);
+Insert into VEHICLE_DTL (VEHICLE_ID,REG_NUM,VEHICLE_NAME,SEAT_COUNT,COST_PER_KM) values (8,'WB12A1145','Tata Winger',10,23);
+--------------------------------------------------------
+--  DDL for Index PASSENGER_PHONE_DEVICE_UUID_UK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PASSENGER_PHONE_DEVICE_UUID_UK" ON "PASSENGER_PHONE" ("DEVICE_UUID") 
+;
+--------------------------------------------------------
+--  DDL for Index ROUTE_STOP_MAP
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "ROUTE_STOP_MAP" ON "ROUTE_STOP_MAP" ("ROUTE_ID", "STOP_ID") 
+;
+--------------------------------------------------------
+--  DDL for Index SYS_C009482
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009482" ON "PASSENGER_PROFILE" ("PSNGR_ID") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009483
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009483" ON "PASSENGER_PROFILE" ("PSNGR_GMAIL") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009486
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009486" ON "PASSENGER_PHONE" ("DEVICE_ID") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009491
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009491" ON "SMART_STOP" ("STOP_ID") 
+;
+--------------------------------------------------------
+--  DDL for Index SYS_C009503
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009503" ON "ROUTE_SCH" ("ROUTE_ID") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009509
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009509" ON "ROUTE_STOP_MAP" ("MAP_ID") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009515
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009515" ON "VEHICLE_DTL" ("VEHICLE_ID") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009518
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009518" ON "BOOKING" ("BOOKING_ID") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009519
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009519" ON "BOOKING" ("BOOKING_NUM") 
+ ;
+--------------------------------------------------------
+--  DDL for Index SYS_C009525
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SYS_C009525" ON "TRIP_EXEC" ("TRIP_ID") 
+ ;
+--------------------------------------------------------
+--  DDL for Index TRIP_SCHEDULE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TRIP_SCHEDULE_PK" ON "TRIP_SCHEDULE" ("TRIP_SCH_ID") 
+;
+--------------------------------------------------------
+--  DDL for Index VEHICLE_DTL_UK_REGNO
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "VEHICLE_DTL_UK_REGNO" ON "VEHICLE_DTL" ("REG_NUM") 
+;
+--------------------------------------------------------
+--  Constraints for Table BOOKING
+--------------------------------------------------------
+
+  ALTER TABLE "BOOKING" MODIFY ("BOOKING_NUM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "BOOKING" MODIFY ("PICKUP_DT_TM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "BOOKING" ADD PRIMARY KEY ("BOOKING_ID")
+ ;
+ 
+  ALTER TABLE "BOOKING" ADD UNIQUE ("BOOKING_NUM")
+ ;
+ 
+  ALTER TABLE "BOOKING" MODIFY ("ROUTE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "BOOKING" MODIFY ("ONBOARD_STOP" NOT NULL ENABLE);
+ 
+  ALTER TABLE "BOOKING" MODIFY ("OFFBOARD_STOP" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PASSENGER_PHONE
+--------------------------------------------------------
+
+  ALTER TABLE "PASSENGER_PHONE" ADD CONSTRAINT "PASSENGER_PHONE_DEVICE_UUID_UK" UNIQUE ("DEVICE_UUID")
+ ;
+ 
+  ALTER TABLE "PASSENGER_PHONE" MODIFY ("DEVICE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PASSENGER_PHONE" ADD PRIMARY KEY ("DEVICE_ID")
+ ;
+ 
+  ALTER TABLE "PASSENGER_PHONE" MODIFY ("DEVICE_UUID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PASSENGER_PROFILE
+--------------------------------------------------------
+
+  ALTER TABLE "PASSENGER_PROFILE" MODIFY ("PSNGR_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PASSENGER_PROFILE" MODIFY ("PSNGR_GMAIL" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PASSENGER_PROFILE" ADD PRIMARY KEY ("PSNGR_ID")
+ ;
+ 
+  ALTER TABLE "PASSENGER_PROFILE" ADD UNIQUE ("PSNGR_GMAIL")
+ ;
+--------------------------------------------------------
+--  Constraints for Table ROUTE_SCH
+--------------------------------------------------------
+
+  ALTER TABLE "ROUTE_SCH" MODIFY ("START_STOP" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_SCH" MODIFY ("END_STOP" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_SCH" MODIFY ("DEPRT_TM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_SCH" MODIFY ("ESTM_ARV_TM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_SCH" ADD PRIMARY KEY ("ROUTE_ID")
+ ;
+--------------------------------------------------------
+--  Constraints for Table ROUTE_STOP_MAP
+--------------------------------------------------------
+
+  ALTER TABLE "ROUTE_STOP_MAP" ADD CONSTRAINT "ROUTE_STOP_MAP" UNIQUE ("ROUTE_ID", "STOP_ID")
+;
+ 
+  ALTER TABLE "ROUTE_STOP_MAP" MODIFY ("ESTM_ARV_TM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_STOP_MAP" MODIFY ("NEXT_STOP_DIST" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_STOP_MAP" MODIFY ("FARE_NEXT_STOP" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_STOP_MAP" ADD PRIMARY KEY ("MAP_ID")
+;
+ 
+  ALTER TABLE "ROUTE_STOP_MAP" MODIFY ("ROUTE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ROUTE_STOP_MAP" MODIFY ("STOP_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table SMART_STOP
+--------------------------------------------------------
+
+  ALTER TABLE "SMART_STOP" MODIFY ("STOP_NM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SMART_STOP" MODIFY ("STOP_LAT" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SMART_STOP" MODIFY ("STOP_LONG" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SMART_STOP" ADD PRIMARY KEY ("STOP_ID")
+;
+--------------------------------------------------------
+--  Constraints for Table TRIP_EXEC
+--------------------------------------------------------
+
+  ALTER TABLE "TRIP_EXEC" MODIFY ("TRIP_DATE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TRIP_EXEC" ADD PRIMARY KEY ("TRIP_ID")
+;
+ 
+  ALTER TABLE "TRIP_EXEC" MODIFY ("ROUTE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TRIP_EXEC" MODIFY ("VEHICLE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TRIP_EXEC" MODIFY ("NEXT_STOP" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TRIP_SCHEDULE
+--------------------------------------------------------
+
+  ALTER TABLE "TRIP_SCHEDULE" MODIFY ("TRIP_SCH_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TRIP_SCHEDULE" MODIFY ("ROUTE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TRIP_SCHEDULE" MODIFY ("TRIP_DATE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TRIP_SCHEDULE" MODIFY ("VEHICLE_ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TRIP_SCHEDULE" ADD CONSTRAINT "TRIP_SCHEDULE_PK" PRIMARY KEY ("TRIP_SCH_ID")
+;
+--------------------------------------------------------
+--  Constraints for Table VEHICLE_DTL
+--------------------------------------------------------
+
+  ALTER TABLE "VEHICLE_DTL" MODIFY ("REG_NUM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "VEHICLE_DTL" MODIFY ("SEAT_COUNT" NOT NULL ENABLE);
+ 
+  ALTER TABLE "VEHICLE_DTL" MODIFY ("COST_PER_KM" NOT NULL ENABLE);
+ 
+  ALTER TABLE "VEHICLE_DTL" ADD CONSTRAINT "VEHICLE_DTL_PK" PRIMARY KEY ("VEHICLE_ID")
+ ;
+ 
+  ALTER TABLE "VEHICLE_DTL" ADD CONSTRAINT "VEHICLE_DTL_UK_REGNO" UNIQUE ("REG_NUM")
+;
+--------------------------------------------------------
+--  Ref Constraints for Table BOOKING
+--------------------------------------------------------
+
+  ALTER TABLE "BOOKING" ADD CONSTRAINT "PASSNGR_PH_FK1" FOREIGN KEY ("DEVICE_ID")
+	  REFERENCES "PASSENGER_PHONE" ("DEVICE_ID") ENABLE;
+ 
+  ALTER TABLE "BOOKING" ADD FOREIGN KEY ("ROUTE_ID")
+	  REFERENCES "ROUTE_SCH" ("ROUTE_ID") ENABLE;
+ 
+  ALTER TABLE "BOOKING" ADD FOREIGN KEY ("ONBOARD_STOP")
+	  REFERENCES "SMART_STOP" ("STOP_ID") ENABLE;
+ 
+  ALTER TABLE "BOOKING" ADD FOREIGN KEY ("OFFBOARD_STOP")
+	  REFERENCES "SMART_STOP" ("STOP_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PASSENGER_PHONE
+--------------------------------------------------------
+
+  ALTER TABLE "PASSENGER_PHONE" ADD CONSTRAINT "FK_PASSENGER_PROFILE" FOREIGN KEY ("PSNGR_ID")
+	  REFERENCES "PASSENGER_PROFILE" ("PSNGR_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ROUTE_SCH
+--------------------------------------------------------
+
+  ALTER TABLE "ROUTE_SCH" ADD FOREIGN KEY ("START_STOP")
+	  REFERENCES "SMART_STOP" ("STOP_ID") ENABLE;
+ 
+  ALTER TABLE "ROUTE_SCH" ADD FOREIGN KEY ("END_STOP")
+	  REFERENCES "SMART_STOP" ("STOP_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ROUTE_STOP_MAP
+--------------------------------------------------------
+
+  ALTER TABLE "ROUTE_STOP_MAP" ADD FOREIGN KEY ("ROUTE_ID")
+	  REFERENCES "ROUTE_SCH" ("ROUTE_ID") ENABLE;
+ 
+  ALTER TABLE "ROUTE_STOP_MAP" ADD FOREIGN KEY ("STOP_ID")
+	  REFERENCES "SMART_STOP" ("STOP_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TRIP_EXEC
+--------------------------------------------------------
+
+  ALTER TABLE "TRIP_EXEC" ADD FOREIGN KEY ("VEHICLE_ID")
+	  REFERENCES "VEHICLE_DTL" ("VEHICLE_ID") ENABLE;
+ 
+  ALTER TABLE "TRIP_EXEC" ADD FOREIGN KEY ("ROUTE_ID")
+	  REFERENCES "ROUTE_SCH" ("ROUTE_ID") ENABLE;
+ 
+  ALTER TABLE "TRIP_EXEC" ADD FOREIGN KEY ("NEXT_STOP")
+	  REFERENCES "SMART_STOP" ("STOP_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TRIP_SCHEDULE
+--------------------------------------------------------
+
+  ALTER TABLE "TRIP_SCHEDULE" ADD CONSTRAINT "TRIP_SCHEDULE_FK_ROUTE_SCH" FOREIGN KEY ("ROUTE_ID")
+	  REFERENCES "ROUTE_SCH" ("ROUTE_ID") ENABLE;
+ 
+  ALTER TABLE "TRIP_SCHEDULE" ADD CONSTRAINT "TRIP_SCHEDULE_FK_VEHICLE_DTL" FOREIGN KEY ("VEHICLE_ID")
+	  REFERENCES "VEHICLE_DTL" ("VEHICLE_ID") ENABLE;
